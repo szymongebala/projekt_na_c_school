@@ -11,7 +11,15 @@ public class BoxMaterial {
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     public Long id;
     public String nazwa;
+
+    public BoxMaterial(String nazwa, BoxMaterial rodzaj) {
+    }
+
+
+
     public enum rodzaj{solid,osb,plywood}
     public BoxMaterial(){}
+    public String getNazwaProjektu() {  return nazwa;
+    }
 
 }

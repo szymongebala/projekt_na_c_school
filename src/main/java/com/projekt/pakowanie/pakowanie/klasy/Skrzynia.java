@@ -25,7 +25,15 @@ public  class  Skrzynia {
         this.wysokoscSkrzyni = wysokoscSkrzyni;
 
     }
-   private double PowierzchniaSkrzyni(int dlugoscSkrzyni,int szerokoscSkrzyni,int wysokoscSkrzyni){
+
+    public Skrzynia(Long id, int dlugoscSkrzyni, int szerokoscSkrzyni, int wysokoscSkrzyni) {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    private double PowierzchniaSkrzyni(int dlugoscSkrzyni, int szerokoscSkrzyni, int wysokoscSkrzyni){
              powierzchniaSkrzyni=2*(dlugoscSkrzyni*wysokoscSkrzyni)+2*(szerokoscSkrzyni*wysokoscSkrzyni)+2*(szerokoscSkrzyni*dlugoscSkrzyni);
              return powierzchniaSkrzyni;
 

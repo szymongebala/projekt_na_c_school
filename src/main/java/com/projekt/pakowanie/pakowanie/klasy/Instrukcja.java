@@ -20,6 +20,9 @@ public Instrukcja(){}
         this.nazwaInstrukcji = nazwaInstrukcji;
     }
 
+    public Instrukcja(String nazwaInstrukcji, BoxMaterial rodzaj, Preservation rodzajPreservation) {
+    }
+
     public String getNazwaInstrukcji() {
         return nazwaInstrukcji;
     }

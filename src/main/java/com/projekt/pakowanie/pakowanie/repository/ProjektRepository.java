@@ -12,4 +12,5 @@ public interface ProjektRepository extends CrudRepository<Projekt,String> {
 Page<Projekt> findByInstrukcja(Instrukcja nazwaInstrukcji, Pageable pageable);
 Page<Projekt> findByBoxMaterial(BoxMaterial nazwa, Pageable pageable);
 
+    void deleteById(Long id);
 }

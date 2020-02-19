@@ -12,6 +12,9 @@ public class Projekt {
     public Instrukcja nazwaInstrukcji; //nazwa instrukcji
     public String nazwaProjektu; //Nazwa projektu
 
+    public Projekt(String nazwaProjektu, Instrukcja nazwaInstrukcji) {
+    }
+
     public Long getId() {
         return id;
     }
