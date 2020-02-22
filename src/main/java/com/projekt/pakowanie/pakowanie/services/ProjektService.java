@@ -1,8 +1,12 @@
 package com.projekt.pakowanie.pakowanie.services;
 
-import com.projekt.pakowanie.pakowanie.klasy.Instrukcja;
+import com.projekt.pakowanie.pakowanie.klasy.modele.Projekt;
+
+import java.util.List;
 
 public interface ProjektService {
-    String createProject (String nazwaProjektu, Instrukcja nazwaInstrukcji );
-    void remoteProjekt(Long id);
+
+    Projekt CreateProjekt(String nazwa);
+    List<Projekt> showAll();
+
 }

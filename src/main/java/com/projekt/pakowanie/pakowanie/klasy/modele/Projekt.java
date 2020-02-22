@@ -1,16 +1,20 @@
-package com.projekt.pakowanie.pakowanie.klasy;
+package com.projekt.pakowanie.pakowanie.klasy.modele;
 
 import javax.persistence.*;
 import java.util.List;
 @Entity
 public class Projekt {
-    @Id
-    @GeneratedValue (strategy= GenerationType.SEQUENCE)
-    public Long id;
-    @OneToOne
-    @JoinColumn(name="nazwaIndtrukcji", referencedColumnName = "id")
-    public Instrukcja nazwaInstrukcji; //nazwa instrukcji
-    public String nazwaProjektu; //Nazwa projektu
+@Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+private Long id;
+    @ManyToOne
+    @JoinColumn(name="Instrukcja")
+    private Instrukcja instrukcja; //nazwa instrukcji
+    @Column
+   private String nazwaProjektu; //Nazwa projektu
+    @ManyToOne
+    @JoinColumn(name="Materiał na skrzynie")
+    private BoxMaterial boxMaterial;
 
     public Projekt(String nazwaProjektu, Instrukcja nazwaInstrukcji) {
     }
@@ -24,11 +28,11 @@ public class Projekt {
     }
 
     public Instrukcja getNazwaInstrukcji() {
-        return nazwaInstrukcji;
+        return instrukcja;
     }
 
     public void setNazwaInstrukcji(Instrukcja nazwaInstrukcji) {
-        this.nazwaInstrukcji = nazwaInstrukcji;
+        this.instrukcja = nazwaInstrukcji;
     }
 
     public String getNazwaProjektu() {
@@ -73,9 +77,28 @@ public class Projekt {
     public Projekt(String nazwaProjektu) {
         this.nazwaProjektu = nazwaProjektu;
     }
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + nazwaProjektu + '\'' +
+                "}";
+
+    }
+    @Override
+    public boolean equals(Object o){
+        if(this==o)return true;
+        if(!(o instanceof Projekt)) return false;
+       Projekt other=(Projekt) o;
+        return id!=null&&id.equals(other.getId());
 
 
-
-
-
+    }
+    @Override
+    public int hashCode(){return 31;}
 }
+
+
+
+
+

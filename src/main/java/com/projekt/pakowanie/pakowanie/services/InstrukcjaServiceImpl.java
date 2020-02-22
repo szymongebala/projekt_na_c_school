@@ -1,17 +1,15 @@
 package com.projekt.pakowanie.pakowanie.services;
 
-import com.projekt.pakowanie.pakowanie.klasy.BoxMaterial;
-import com.projekt.pakowanie.pakowanie.klasy.Instrukcja;
-import com.projekt.pakowanie.pakowanie.klasy.Preservation;
+import com.projekt.pakowanie.pakowanie.klasy.modele.Instrukcja;
 import com.projekt.pakowanie.pakowanie.repository.InstrukcjaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-
+import java.util.List;
 @Service
 @Transactional
+public class InstrukcjaServiceImpl  implements InstrukcjaService{
 
-public class InstrukcjaServiceImpl implements InstrukcjaService {
     private InstrukcjaRepository instrukcjaRepository;
 
     public InstrukcjaServiceImpl(InstrukcjaRepository instrukcjaRepository) {
@@ -19,14 +17,14 @@ public class InstrukcjaServiceImpl implements InstrukcjaService {
     }
 
     @Override
-    public String createInstrukcjia(String nazwaInstrukcji, BoxMaterial rodzaj, Preservation rodzajPreservation) {
-        Instrukcja nowainstrukcja=new Instrukcja(nazwaInstrukcji,rodzaj,rodzajPreservation);
-        instrukcjaRepository.save(nowainstrukcja);
-        return nowainstrukcja.getNazwaInstrukcji();
+    public Instrukcja CreateInstrukcja(String nazwa) {
+        Instrukcja instrukcja=new Instrukcja(nazwa);
+       instrukcjaRepository.save(instrukcja);
+       return instrukcja;
     }
 
     @Override
-    public void remoteInstrukcja(Long id) {
-
+    public List<Instrukcja> showAll() {
+        return (List<Instrukcja>)instrukcjaRepository.findAll();
     }
 }

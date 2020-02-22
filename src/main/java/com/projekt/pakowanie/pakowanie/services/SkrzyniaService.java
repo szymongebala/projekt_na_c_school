@@ -1,6 +1,10 @@
 package com.projekt.pakowanie.pakowanie.services;
 
+import com.projekt.pakowanie.pakowanie.klasy.modele.Skrzynia;
+
+import java.util.List;
+
 public interface SkrzyniaService {
-    Long createSkrzynia (Long id, int dlugoscSkrzyni,int szerokoscSkrzyni, int wysokoscSkrzyni );
-    void remoteSkrzynia(Long id);
+   Skrzynia CreateSkrzynia(int dlugosc,int szerokosc, int wysokosc ,int ilosc);
+    List<Skrzynia> showAll();
 }
