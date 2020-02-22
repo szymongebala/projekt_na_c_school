@@ -1,35 +1,35 @@
 package com.projekt.pakowanie.pakowanie.services;
 
-import com.projekt.pakowanie.pakowanie.klasy.Instrukcja;
-import com.projekt.pakowanie.pakowanie.klasy.Projekt;
-import com.projekt.pakowanie.pakowanie.repository.InstrukcjaRepository;
+
+import com.projekt.pakowanie.pakowanie.klasy.modele.Projekt;
 import com.projekt.pakowanie.pakowanie.repository.ProjektRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
-public class ProjektServiceImpl  implements ProjektService{
-     private ProjektRepository projektRepository;
-     private InstrukcjaRepository instrukcjasRepository;
+    public class ProjektServiceImpl implements ProjektService {
+        private ProjektRepository projektRepository;
 
-    public ProjektServiceImpl(ProjektRepository projektRepository, InstrukcjaRepository instrukcjasRepository) {
-        this.projektRepository = projektRepository;
-        this.instrukcjasRepository = instrukcjasRepository;
-    }
+        public ProjektServiceImpl(ProjektRepository projektRepository) {
+            this.projektRepository = projektRepository;
+        }
 
-    @Override
-    @Transactional
-    public String createProject(String nazwaProjektu, Instrukcja nazwaInstrukcji) {
-        Projekt projekt=new Projekt(nazwaProjektu, nazwaInstrukcji );
-        projektRepository.save(projekt);
-        return projekt.getNazwaProjektu();
-    }
+        @Override
+        public Projekt CreateProjekt(String nazwa ){
 
-    @Override
-    public void remoteProjekt(Long id) {projektRepository.deleteById(id);
+            Projekt Projekt=new Projekt(nazwa);
+            projektRepository.save(Projekt);
+            return Projekt;
+        }
+
+        @Override
+        public List<Projekt> showAll() {
+            return (List<Projekt>) projektRepository.findAll();
+        }
 
 
-    }
+
 }

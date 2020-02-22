@@ -1,9 +1,10 @@
 package com.projekt.pakowanie.pakowanie.services;
 
-import com.projekt.pakowanie.pakowanie.klasy.BoxMaterial;
-import com.projekt.pakowanie.pakowanie.klasy.Preservation;
+import com.projekt.pakowanie.pakowanie.klasy.modele.Instrukcja;
+
+import java.util.List;
 
 public interface InstrukcjaService {
-    String createInstrukcjia  (String nazwaInstrukcji, BoxMaterial rodzaj, Preservation rodzajPreservation );
-    void remoteInstrukcja(Long id);
+    Instrukcja CreateInstrukcja(String nazwa);
+    List<Instrukcja> showAll();
 }

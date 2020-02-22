@@ -1,7 +1,11 @@
 package com.projekt.pakowanie.pakowanie.services;
 
+import com.projekt.pakowanie.pakowanie.klasy.modele.Preservation;
+
+import java.util.List;
 
 public interface PreservationService {
-    String createPreservation (String nazwa);
-    void remotePreservation(Long id);
+    Preservation CreatePreservation(String nazwa);
+    List<Preservation> showAll();
 }
+
