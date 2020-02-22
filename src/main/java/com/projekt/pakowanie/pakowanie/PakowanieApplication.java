@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.projekt.pakowandie.pakowanie.controler"})
+@ComponentScan(basePackages = {"com.projekt.pakowanie.pakowanie.controler"})
 public class PakowanieApplication {
 
 	public static void main(String[] args) {
