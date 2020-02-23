@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -18,11 +19,11 @@ import java.util.List;
         }
 
         @Override
-        public Projekt CreateProjekt(String nazwa ){
+        public Projekt CreateProjekt(String nazwaProjektu ){
 
-            Projekt Projekt=new Projekt(nazwa);
-            projektRepository.save(Projekt);
-            return Projekt;
+            Projekt projekt=new Projekt(nazwaProjektu);
+            projektRepository.save(projekt);
+            return projekt;
         }
 
         @Override
@@ -30,6 +31,16 @@ import java.util.List;
             return (List<Projekt>) projektRepository.findAll();
         }
 
+    @Override
+    public Optional<Projekt> find(Long id) {
+        Optional<Projekt> projekt=projektRepository.findById(id);
+        return projekt ;
+    }
+    @Override
+    public Iterable<Projekt> findAll(){
+        return  projektRepository.findAll();
+
+    }
 
 
 }

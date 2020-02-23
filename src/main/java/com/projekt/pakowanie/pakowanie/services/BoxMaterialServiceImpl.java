@@ -9,17 +9,17 @@ import java.util.List;
 
 @Service
 @Transactional
-public class BoxMaterialImpl implements BoxMaterialService {
+public class BoxMaterialServiceImpl implements BoxMaterialService {
     private BoxMaterialRepository boxMaterialRepository;
 
-    public BoxMaterialImpl(BoxMaterialRepository boxMaterialRepository) {
+    public BoxMaterialServiceImpl(BoxMaterialRepository boxMaterialRepository) {
         this.boxMaterialRepository = boxMaterialRepository;
     }
 
     @Override
     public BoxMaterial CreateBoxMaterial(String nazwa ){
 
-   BoxMaterial boxMaterial=new BoxMaterial(nazwa);
+        BoxMaterial boxMaterial=new BoxMaterial(nazwa);
         boxMaterialRepository.save(boxMaterial);
         return boxMaterial;
     }

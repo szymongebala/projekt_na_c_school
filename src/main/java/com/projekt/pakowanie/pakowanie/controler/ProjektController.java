@@ -18,17 +18,18 @@ public class ProjektController {
         this.projektService = projektService;
     }
 
+
     @RequestMapping(value = "/CreateProjekt")
     @ResponseBody
-
-
-
-    public Projekt CreateProjekt(@RequestParam String nazwa) {
-        return projektService.CreateProjekt(nazwa);
+    public Projekt CreateProjekt (@RequestParam String nazwaProjektu) {
+        return projektService.CreateProjekt(nazwaProjektu);
     }
 
     @RequestMapping(value = "/ProjektShow", method = RequestMethod.GET)
     public List<Projekt> showAll() {
         return projektService.showAll();
     }
+   /*@RequestMapping("/findByid")
+    public Optional<Projekt> FindById(@RequestParam String id){return projektService.FindById(id);}
+*/
 }

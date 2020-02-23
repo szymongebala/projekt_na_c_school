@@ -7,4 +7,5 @@ package com.projekt.pakowanie.pakowanie.services;
 public interface BoxMaterialService {
     BoxMaterial CreateBoxMaterial(String nazwa);
     List<BoxMaterial> showAll();
+
 }
