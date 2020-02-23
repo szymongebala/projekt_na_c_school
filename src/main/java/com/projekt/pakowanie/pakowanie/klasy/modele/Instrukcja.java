@@ -1,6 +1,7 @@
 package com.projekt.pakowanie.pakowanie.klasy.modele;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -9,45 +10,37 @@ public class Instrukcja {
 @GeneratedValue(strategy=GenerationType.SEQUENCE)
 private Long id;
 @Column
-    private String nazwaInstrukcji;
+private String nazwaInstrukcji;
 
 
-@ManyToOne
-@JoinColumn(name="Preservation")
-    private Preservation preservation;
-@ManyToOne
 
-    private BoxMaterial boxMaterial;
 
-public Instrukcja(){}
+@OneToMany(mappedBy="instrukcja")
+private List<Projekt> projekty;
+
+
+
+
+
+
+
+
+
+
+
+
+    public Instrukcja(){}
     public Instrukcja(String nazwaInstrukcji) {
-        this.nazwaInstrukcji = nazwaInstrukcji;
+        this.nazwaInstrukcji=nazwaInstrukcji;
     }
 
     public Instrukcja(String nazwaInstrukcji, BoxMaterial rodzaj, Preservation rodzajPreservation) {
-    }
+   }
 
     public String getNazwaInstrukcji() {
         return nazwaInstrukcji;
     }
 
-    public Preservation getPreservation() {
-        return preservation;
-    }
-
-    public void setPreservation(Preservation preservation) {
-        this.preservation = preservation;
-    }
-
-
-
-    public BoxMaterial getBoxMaterial() {
-        return boxMaterial;
-    }
-
-    public void setBoxMaterial(BoxMaterial boxMaterial) {
-        this.boxMaterial = boxMaterial;
-    }
 
     public Long getId() {
         return id;
@@ -55,6 +48,22 @@ public Instrukcja(){}
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Projekt> getProjekty() {
+        return projekty;
+    }
+
+    public void setProjekty(List<Projekt> projekty) {
+        this.projekty = projekty;
+    }
+
+    public void setNazwaInstrukcji(String nazwaInstrukcji) {
+        this.nazwaInstrukcji = nazwaInstrukcji;
+    }
+
+    public Instrukcja(List <Projekt> projekty) {
+        this.projekty = projekty;
     }
     @Override
     public boolean equals(Object o){

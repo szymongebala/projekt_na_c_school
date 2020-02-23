@@ -2,21 +2,32 @@ package com.projekt.pakowanie.pakowanie.klasy.modele;
 
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
 public class Projekt {
 @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+@GeneratedValue(strategy = GenerationType.SEQUENCE)
 private Long id;
-    @ManyToOne
-    @JoinColumn(name="Instrukcja")
-    private Instrukcja instrukcja; //nazwa instrukcji
+
     @Column
    private String nazwaProjektu; //Nazwa projektu
-    @ManyToOne
-    @JoinColumn(name="Materiał na skrzynie")
-    private BoxMaterial boxMaterial;
 
-    public Projekt(String nazwaProjektu, Instrukcja nazwaInstrukcji) {
+
+    public Instrukcja getInstrukcja() {
+        return instrukcja;
+    }
+
+    public void setInstrukcja(Instrukcja instrukcja) {
+        this.instrukcja = instrukcja;
+    }
+
+    @ManyToOne()
+private Instrukcja instrukcja;
+
+    public Projekt() {   }
+
+    public Projekt(String nazwaProjektu) {
+        this.nazwaProjektu = nazwaProjektu;
     }
 
     public Long getId() {
@@ -27,13 +38,6 @@ private Long id;
         this.id = id;
     }
 
-    public Instrukcja getNazwaInstrukcji() {
-        return instrukcja;
-    }
-
-    public void setNazwaInstrukcji(Instrukcja nazwaInstrukcji) {
-        this.instrukcja = nazwaInstrukcji;
-    }
 
     public String getNazwaProjektu() {
         return nazwaProjektu;
@@ -67,16 +71,15 @@ private Long id;
         Koszt = koszt;
     }
 
+
+
+
     @OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
     public List<Skrzynia> listaSkrzyn;//lista skrzyńs w projekcie
     boolean rysunki;//czy rysunki dostarczono
     Double Koszt;//koszt projektu
 
-    public Projekt() {   }
 
-    public Projekt(String nazwaProjektu) {
-        this.nazwaProjektu = nazwaProjektu;
-    }
     @Override
     public String toString() {
         return "Project{" +

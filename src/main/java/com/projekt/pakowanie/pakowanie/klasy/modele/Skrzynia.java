@@ -13,8 +13,6 @@ private Long id;
 private double powierzchniaSkrzyni;
 private double objetoscSkrzyni;
 private int ilosc;
-@ManyToOne
-private Projekt projekt;
 
     public Skrzynia(){}
 

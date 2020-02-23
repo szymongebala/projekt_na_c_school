@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface PreservationRepository extends CrudRepository<Preservation,Long>
 
 {
-// Preservation createPreservation(String nazwa);
+
 }
