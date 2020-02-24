@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface BoxMaterialRepository extends CrudRepository<BoxMaterial,Long> {
 
-    //BoxMaterial CreateBoxMaterial(String nazwa);
+
 }

@@ -1,8 +1,10 @@
 package com.projekt.pakowanie.pakowanie.klasy.modele;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projekt.pakowanie.pakowanie.klasy.type.PreservationEnum;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Preservation {
@@ -12,6 +14,17 @@ private Long id;
 private String nazwa;
 @Enumerated(EnumType.STRING)
 private PreservationEnum preservationEnum;
+@OneToMany(mappedBy="preservation")
+@JsonIgnore
+private List<Instrukcja> instrukcja;
+
+    public List<Instrukcja> getInstrukcja() {
+        return instrukcja;
+    }
+
+    public void setInstrukcja(List<Instrukcja> instrukcja) {
+        this.instrukcja = instrukcja;
+    }
 
     public Preservation(){}
 

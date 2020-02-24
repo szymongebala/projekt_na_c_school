@@ -1,33 +1,59 @@
 package com.projekt.pakowanie.pakowanie.klasy.modele;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 
 public class Instrukcja {
-@Id
+
+    @Id
 @GeneratedValue(strategy=GenerationType.SEQUENCE)
 private Long id;
 @Column
+
 private String nazwaInstrukcji;
-
-
-
-
 @OneToMany(mappedBy="instrukcja")
+@JsonIgnore
 private List<Projekt> projekty;
+   private String jsonArray;
+
+    public String getJsonArray() {
+        return jsonArray;
+    }
+
+    public void setJsonArray(String jsonArray) {
+        this.jsonArray = jsonArray;
+    }
+
+    public BoxMaterial getBoxMaterial() {
+        return boxMaterial;
+    }
+
+    public void setBoxMaterial(BoxMaterial boxMaterial) {
+        this.boxMaterial = boxMaterial;
+    }
+
+    public Instrukcja(BoxMaterial boxMaterial) {
+        this.boxMaterial = boxMaterial;
+    }
+
+    @ManyToOne()
+private BoxMaterial boxMaterial;
+    @ManyToOne()
+    private Preservation preservation;
 
 
+    public Preservation getPreservation() {
+        return preservation;
+    }
 
-
-
-
-
-
-
-
-
+    public void setPreservation(Preservation preservation) {
+        this.preservation = preservation;
+    }
 
     public Instrukcja(){}
     public Instrukcja(String nazwaInstrukcji) {

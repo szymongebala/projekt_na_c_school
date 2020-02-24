@@ -1,8 +1,10 @@
 package com.projekt.pakowanie.pakowanie.klasy.modele;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projekt.pakowanie.pakowanie.klasy.type.BoxMaterialEnum;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -15,6 +17,20 @@ public class BoxMaterial {
     @Column
     @Enumerated(EnumType.STRING)
     private BoxMaterialEnum boxMaterialEnum;
+
+
+
+    @OneToMany(mappedBy = "boxMaterial")
+    @JsonIgnore
+    private List<Instrukcja> instrukcja;
+
+    public List<Instrukcja> getInstrukcja() {
+        return instrukcja;
+    }
+
+    public void setInstrukcja(List<Instrukcja> instrukcja) {
+        this.instrukcja = instrukcja;
+    }
 
     public BoxMaterial() {
 

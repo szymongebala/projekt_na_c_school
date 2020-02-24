@@ -10,7 +10,7 @@ public interface InstrukcjaService {
     List<Instrukcja> showAll();
 
     Optional<Instrukcja> find(Long id);
-    Instrukcja add(Optional projekt,Optional instrukcja);
+    Optional <Instrukcja> add(Long id,Long id2);
 
     Iterable<Instrukcja> findAll();
 }

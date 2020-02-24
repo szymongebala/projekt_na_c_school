@@ -45,21 +45,14 @@ public class InstrukcjaServiceImpl  implements InstrukcjaService {
     }
 
     @Override
-    public Instrukcja add(Optional optionalProjekt, Optional optionalInstrukcja) {
+    public Optional<Instrukcja> add(Long idProjekt, Long idInstrukcja ){
+     Optional<Instrukcja> instrukcja=instrukcjaRepository.findById(idInstrukcja);
+            Optional <Projekt> projekt=projektRepository.findById(idProjekt);
+            projekt.get().setInstrukcja(instrukcja.get());
+            instrukcja.get().getProjekty().add(projekt.get());
 
-        if (optionalProjekt.isPresent() && optionalInstrukcja.isPresent()) {
-            Projekt projekt = (Projekt) optionalProjekt.get();
-            Instrukcja instrukcja = (Instrukcja) optionalInstrukcja.get();
-            instrukcja.getProjekty().add(projekt);
-            projekt.setInstrukcja(instrukcja);
-            projektRepository.save(projekt);
-            instrukcjaRepository.save(instrukcja);
-
-            return instrukcja;
-
-        }
-
-       return instrukcjaRepository.save( (Instrukcja) optionalInstrukcja.get());
+         instrukcjaRepository.save(instrukcja.get());
+    return  instrukcja;
     }
 
     @Override
