@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SkrzyniaRepository extends CrudRepository<Skrzynia,Long> {
 
-    //Skrzynia createSkrzynia(int dlugoscSkrzyni, int szerokoscSkrzyni,int wysokoscSkrzyni);
+
 
 }

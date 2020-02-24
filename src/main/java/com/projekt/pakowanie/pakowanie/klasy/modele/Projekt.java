@@ -24,12 +24,24 @@ private Long id;
     @ManyToOne()
 private Instrukcja instrukcja;
 
+
     public Projekt() {   }
 
     public Projekt(String nazwaProjektu) {
         this.nazwaProjektu = nazwaProjektu;
     }
 
+    public Projekt(List<Skrzynia> skrzynia) {
+        this.skrzynia = skrzynia;
+    }
+
+    public List<Skrzynia> getSkrzynia() {
+        return skrzynia;
+    }
+
+    public void setSkrzynia(List<Skrzynia> skrzynia) {
+        this.skrzynia = skrzynia;
+    }
     public Long getId() {
         return id;
     }
@@ -37,6 +49,7 @@ private Instrukcja instrukcja;
     public void setId(Long id) {
         this.id = id;
     }
+
 
 
     public String getNazwaProjektu() {
@@ -47,37 +60,24 @@ private Instrukcja instrukcja;
         this.nazwaProjektu = nazwaProjektu;
     }
 
-    public List<Skrzynia> getListaSkrzyn() {
-        return listaSkrzyn;
-    }
 
-    public void setListaSkrzyn(List<Skrzynia> listaSkrzyn) {
-        this.listaSkrzyn = listaSkrzyn;
-    }
 
-    public boolean isRysunki() {
-        return rysunki;
-    }
 
-    public void setRysunki(boolean rysunki) {
-        this.rysunki = rysunki;
-    }
 
-    public Double getKoszt() {
+
+
+    public int getKoszt() {
         return Koszt;
     }
 
-    public void setKoszt(Double koszt) {
-        Koszt = koszt;
+    public void setKoszt(int koszt) {
+        Koszt = koszt*1000;
     }
 
-
-
-
     @OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
-    public List<Skrzynia> listaSkrzyn;//lista skrzyńs w projekcie
-    boolean rysunki;//czy rysunki dostarczono
-    Double Koszt;//koszt projektu
+    public List<Skrzynia> skrzynia;//lista skrzyńs w projekcie
+
+int Koszt;
 
 
     @Override

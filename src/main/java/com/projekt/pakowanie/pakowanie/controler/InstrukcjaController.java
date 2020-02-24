@@ -37,14 +37,12 @@ public class InstrukcjaController {
 
     @RequestMapping("/addProjekt/{projektid}/{instrukcjaid}")
     @ResponseBody
-    public String addInstrukcja(@PathVariable Long projektid,@PathVariable Long instrukcjaid) {
-        Optional<Projekt> optionalProjekt = projektService.find(projektid);
-        Optional<Instrukcja> optionalInstrukcja = instrukcjaService.find(instrukcjaid);
+    public Optional<Instrukcja> addInstrukcja(@PathVariable Long projektid,@PathVariable Long instrukcjaid) {
+       Optional<Instrukcja> instrukcja = instrukcjaService.add(projektid,instrukcjaid);
 
 
-     Instrukcja instrukcja= instrukcjaService.add(optionalProjekt,optionalInstrukcja);
 
-        return InstrukcjeiProjekty();
+        return instrukcja;
 
 
 
@@ -63,6 +61,15 @@ public class InstrukcjaController {
 
         return response.toString();
     }
+@RequestMapping("/znajdz/{id}")
+    @ResponseBody
+    public Optional<Instrukcja>findBy(@PathVariable Long id){
+     Optional<Instrukcja>instrukcja =instrukcjaService.find(id);
+
+    return instrukcja;
+
+}
+
 
 }
 
