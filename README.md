@@ -26,14 +26,14 @@ Baza przechowuje Instrukcje
 		
 Baza przechowuje Preservation
 
-  -preservation reprezentuje trzy sposoby konserwacji
+  -preservation reprezentuje sposoby konserwacji
   -Preservation należy do instrukcji
 Baza przechowuje BoxMaterial
 
-  -boxmaterial reprezentuke trzy typy materiałów 
+  -boxmaterial reprezentuke  typy materiałów 
   -box material należy do:
     -instrukcji
-    -projektu
+
 		
 Baza przechowuje skrzynie:
 
@@ -58,9 +58,7 @@ Projektom można nadać status:
 
 Ofertowany
 Zamówiony
-Przygotowany
-Skończony
-Wysłany
+gotowy
 
 Technologie użyte w projekcie:
 SpringBoot
@@ -69,6 +67,34 @@ Baza danych PostgresQL
 Spring MVC
 Spring data
     
+
+Komendy.
+Projekt:
+CreateProjekt@nazwaProjektu-tworzy projekt o nazwie
+ProjektShow-wyswietla wszystkie projekty
+ProjectFind?id szuka projektu po id 
+projekt-skrzynie Wypisuje projekty i listę skrzyń
+projekty-wyświetla pełne informacje o projektach
+
+
+
+
+Instrukcja
+CreateIns?nazwaInstrukcji-tworzy instrukcję
+InstrukcjaShow wuswietla wszystkie instrukcje
+/addProjekt/{projektId}/{instrukcjaId} dodaje instrukcję do projektu 
+/Projekt-instrukcja-wyswietla w txt listę instrukcji i powiązanych projektów 
+/znajdz{id}-wyszukuje instrukcję po id
+Preservation
+CreatePreservation?nazwa tworzy preservation
+PreservationShow wypisuje preservation
+addPreservation/{preservationid}/{instrukcjaid} dodaje preservation do instrukcji 
+BoxMaterial
+CreateMaterial?nazwa tworzy materiał
+BoxMaterialShow wypisuje listę materiałów
+instrukcja-boxmaterial-wypisuje materiały powiązane z instrukcjami 
+znajdzBoxmaterial/{id} znajduje materiał po id 
+/projekt/status/{id}
  
 
     
