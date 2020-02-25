@@ -86,6 +86,18 @@ append("instrukcja ").append(projekt.get().getInstrukcja()).append("<br>").appen
 return response.toString();
 
 }
-
-
+@RequestMapping("/projekt/status/{id}")
+    public Optional<Projekt> projektstatus(@PathVariable Long id){
+    Optional<Projekt> projekt = projektService.find(id);
+    int idint =id.intValue();
+    switch(idint) {
+        case 1: projekt.get().setOfertowany(true);
+        case 2:projekt.get().setZamówiony(true);
+        case 3:projekt.get().setGotowy(true);
+        default:{ projekt.get().setZamówiony(false);
+        projekt.get().setOfertowany(false);
+        projekt.get().setGotowy(false);}
+    }
+return projekt;
+}
 }
