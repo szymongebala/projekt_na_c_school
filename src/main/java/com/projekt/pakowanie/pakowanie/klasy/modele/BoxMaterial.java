@@ -1,7 +1,6 @@
 package com.projekt.pakowanie.pakowanie.klasy.modele;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.projekt.pakowanie.pakowanie.klasy.type.BoxMaterialEnum;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,9 +13,8 @@ public class BoxMaterial {
     private Long id;
     @Column
     private String nazwa;
-    @Column
-    @Enumerated(EnumType.STRING)
-    private BoxMaterialEnum boxMaterialEnum;
+
+
 
 
 
@@ -40,22 +38,13 @@ public class BoxMaterial {
         this.nazwa = nazwa;
     }
 
-    public BoxMaterial(String nazwa, BoxMaterialEnum boxMaterialEnum) {
-        this.nazwa = nazwa;
-        this.boxMaterialEnum = boxMaterialEnum;
-    }
+
 
     public Long getId() {
         return id;
     }
 
-    public BoxMaterialEnum getBoxMaterialEnum() {
-        return boxMaterialEnum;
-    }
 
-    public void setBoxMaterialEnum(BoxMaterialEnum boxMaterialEnum) {
-        this.boxMaterialEnum = boxMaterialEnum;
-    }
 
     public void setId(Long id) {
         this.id = id;

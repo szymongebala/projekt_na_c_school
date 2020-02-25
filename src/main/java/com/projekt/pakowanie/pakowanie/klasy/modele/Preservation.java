@@ -1,7 +1,6 @@
 package com.projekt.pakowanie.pakowanie.klasy.modele;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.projekt.pakowanie.pakowanie.klasy.type.PreservationEnum;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,8 +11,7 @@ public class Preservation {
 @GeneratedValue(strategy = GenerationType.SEQUENCE)
 private Long id;
 private String nazwa;
-@Enumerated(EnumType.STRING)
-private PreservationEnum preservationEnum;
+
 @OneToMany(mappedBy="preservation")
 @JsonIgnore
 private List<Instrukcja> instrukcja;
@@ -52,13 +50,7 @@ private List<Instrukcja> instrukcja;
         this.id = id;
     }
 
-    public PreservationEnum getPreservationEnum() {
-        return preservationEnum;
-    }
 
-    public void setPreservationEnum(PreservationEnum preservationEnum) {
-        this.preservationEnum = preservationEnum;
-    }
 
     @Override
     public boolean equals(Object o){
