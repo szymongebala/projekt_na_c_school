@@ -21,7 +21,7 @@ public class Test2 {
 
 
 
-     
+
      Assertions.assertEquals(true,instrukcja.getNazwaInstrukcji().equals("nazwa"));
 
 
