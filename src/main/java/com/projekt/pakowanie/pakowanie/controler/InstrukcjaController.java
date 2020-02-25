@@ -4,6 +4,7 @@ import com.projekt.pakowanie.pakowanie.klasy.modele.Instrukcja;
 import com.projekt.pakowanie.pakowanie.klasy.modele.Projekt;
 import com.projekt.pakowanie.pakowanie.services.InstrukcjaService;
 import com.projekt.pakowanie.pakowanie.services.ProjektService;
+import com.projekt.pakowanie.pakowanie.wyjątki.podstawowewyjatki;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,9 @@ public class InstrukcjaController {
     @RequestMapping(value = "/CreateIns")
     @ResponseBody
     public Instrukcja CreateInstrukcja(@RequestParam String nazwaInstrukcji) {
+
         return instrukcjaService.CreateInstrukcja(nazwaInstrukcji);
+
     }
 
     @RequestMapping(value = "/InstrukcjaShow", method = RequestMethod.GET)
@@ -38,8 +41,9 @@ public class InstrukcjaController {
     @RequestMapping("/addProjekt/{projektid}/{instrukcjaid}")
     @ResponseBody
     public Optional<Instrukcja> addInstrukcja(@PathVariable Long projektid,@PathVariable Long instrukcjaid) {
-       Optional<Instrukcja> instrukcja = instrukcjaService.add(projektid,instrukcjaid);
 
+       Optional<Instrukcja> instrukcja = instrukcjaService.add(projektid,instrukcjaid);
+        if(!instrukcja.isPresent()){throw new podstawowewyjatki("Coś tu nie istnieje");}
 
 
         return instrukcja;

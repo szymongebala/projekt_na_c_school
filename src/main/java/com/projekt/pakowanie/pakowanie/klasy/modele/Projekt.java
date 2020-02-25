@@ -20,6 +20,36 @@ private Long id;
     @ManyToOne()
 private Instrukcja instrukcja;
 
+    public Boolean getOfertowany() {
+        return ofertowany;
+    }
+
+    public void setOfertowany(Boolean ofertowany) {
+        this.ofertowany = ofertowany;
+    }
+
+    public Boolean getZamówiony() {
+        return zamówiony;
+    }
+
+    public void setZamówiony(Boolean zamówiony) {
+        this.zamówiony = zamówiony;
+    }
+
+    public Boolean getGotowy() {
+        return gotowy;
+    }
+
+    public void setGotowy(Boolean gotowy) {
+        this.gotowy = gotowy;
+    }
+
+    Boolean ofertowany;
+Boolean zamówiony;
+Boolean gotowy;
+
+
+
 
 
     public Projekt() {   }
