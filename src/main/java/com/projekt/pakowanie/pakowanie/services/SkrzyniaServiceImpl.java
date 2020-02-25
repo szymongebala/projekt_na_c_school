@@ -17,17 +17,17 @@ import java.util.Optional;
         private SkrzyniaRepository skrzyniaRepository;
         private ProjektRepository projektRepository;
 
-        public SkrzyniaServiceImpl(SkrzyniaRepository skrzyniaRepository) {
+        public SkrzyniaServiceImpl(SkrzyniaRepository skrzyniaRepository,ProjektRepository projektRepository) {
             this.skrzyniaRepository = skrzyniaRepository;
+            this.projektRepository=projektRepository;
         }
-
-
     @Override
-    public Skrzynia CreateSkrzynia() {
-Skrzynia skrzynia = new Skrzynia(1,1,1,1);
-       skrzyniaRepository.save(skrzynia);
+    public Skrzynia CreateSkrzynia( Long dlugosc,Long szerokosc,Long wysokosc,Long ilosc){
+        Skrzynia skrzynia=new Skrzynia(dlugosc,szerokosc,wysokosc,ilosc);
+        skrzyniaRepository.save(skrzynia);
         return skrzynia;
     }
+
 
         @Override
         public List<Skrzynia> showAll() {

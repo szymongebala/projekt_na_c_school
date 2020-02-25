@@ -1,5 +1,7 @@
 package com.projekt.pakowanie.pakowanie.klasy.modele;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,16 +15,11 @@ private Long id;
    private String nazwaProjektu; //Nazwa projektu
 
 
-    public Instrukcja getInstrukcja() {
-        return instrukcja;
-    }
 
-    public void setInstrukcja(Instrukcja instrukcja) {
-        this.instrukcja = instrukcja;
-    }
 
     @ManyToOne()
 private Instrukcja instrukcja;
+
 
 
     public Projekt() {   }
@@ -31,9 +28,7 @@ private Instrukcja instrukcja;
         this.nazwaProjektu = nazwaProjektu;
     }
 
-    public Projekt(List<Skrzynia> skrzynia) {
-        this.skrzynia = skrzynia;
-    }
+
 
     public List<Skrzynia> getSkrzynia() {
         return skrzynia;
@@ -65,7 +60,13 @@ private Instrukcja instrukcja;
 
 
 
+    public Instrukcja getInstrukcja() {
+        return instrukcja;
+    }
 
+    public void setInstrukcja(Instrukcja instrukcja) {
+        this.instrukcja = instrukcja;
+    }
     public int getKoszt() {
         return Koszt;
     }
@@ -73,9 +74,9 @@ private Instrukcja instrukcja;
     public void setKoszt(int koszt) {
         Koszt = koszt*1000;
     }
-
-    @OneToMany(mappedBy="id",cascade = CascadeType.ALL,orphanRemoval = true)
-    public List<Skrzynia> skrzynia;//lista skrzyńs w projekcie
+@JsonIgnore
+    @OneToMany(mappedBy="projekt")
+    private List<Skrzynia> skrzynia;//lista skrzyńs w projekcie
 
 int Koszt;
 
