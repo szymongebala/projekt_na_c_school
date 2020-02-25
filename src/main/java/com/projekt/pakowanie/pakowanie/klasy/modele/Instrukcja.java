@@ -19,15 +19,9 @@ private String nazwaInstrukcji;
 @OneToMany(mappedBy="instrukcja")
 @JsonIgnore
 private List<Projekt> projekty;
-   private String jsonArray;
 
-    public String getJsonArray() {
-        return jsonArray;
-    }
 
-    public void setJsonArray(String jsonArray) {
-        this.jsonArray = jsonArray;
-    }
+
 
     public BoxMaterial getBoxMaterial() {
         return boxMaterial;

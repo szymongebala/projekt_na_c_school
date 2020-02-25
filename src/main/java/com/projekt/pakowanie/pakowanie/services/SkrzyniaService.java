@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SkrzyniaService {
-   Skrzynia CreateSkrzynia();
-    List<Skrzynia> showAll();
+   Skrzynia CreateSkrzynia(Long dlugosc,Long szerokosc, Long wysokosc,Long ilosc);//tworzy skrzynie
+    List<Skrzynia> showAll();//pokazuje wszystkie skrzynie
 
-    Optional<Skrzynia> find(Long id);
-    Optional <Projekt> add(Long id, Long id2);
+    Optional<Skrzynia> find(Long id);//szuka skrzyni po id
+    Optional <Projekt> add(Long id, Long id2);//dodaje skrzynie do projektu
 
 
 }
