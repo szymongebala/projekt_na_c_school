@@ -10,19 +10,26 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class Test1 {
+class Test1 {
     @Autowired
+    private
     ProjektRepository projektRepository;
+
+    @BeforeEach//w cholerę ważne
+    void usun(){
+        projektRepository.deleteAll();
+    }
     @BeforeEach
-    void dodaj(){
+    void dodaj() {
         projektRepository.save(new Projekt());
 
     }
+
     @Test
-public void test(){
-        List<Projekt> projekt= (List<Projekt>) projektRepository.findAll();
-        Assertions.assertEquals(1,projekt.size());
-   }
+    void test() {
+        List<Projekt> projekt = (List<Projekt>) projektRepository.findAll();
+        Assertions.assertEquals(1, projekt.size());
+    }
 
 
 }

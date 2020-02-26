@@ -11,36 +11,37 @@ import java.util.Optional;
 
 @Service
 @Transactional
-    public class ProjektServiceImpl implements ProjektService {
-        private ProjektRepository projektRepository;
+public class ProjektServiceImpl implements ProjektService {
+	private ProjektRepository projektRepository;
 
-        public ProjektServiceImpl(ProjektRepository projektRepository) {
-            this.projektRepository = projektRepository;
-        }
+	public ProjektServiceImpl(ProjektRepository projektRepository) {
+		this.projektRepository = projektRepository;
+	}
 
-        @Override
-        public Projekt CreateProjekt(String nazwaProjektu ){
+	@Override
+	public Projekt CreateProjekt(String nazwaProjektu) {
 
-            Projekt projekt=new Projekt(nazwaProjektu);
-            projektRepository.save(projekt);
-            return projekt;
-        }
+		Projekt projekt = new Projekt(nazwaProjektu);
+		projektRepository.save(projekt);
+		return projekt;
+	}
 
-        @Override
-        public List<Projekt> showAll() {
-            return (List<Projekt>) projektRepository.findAll();
-        }
+	@Override
+	public List<Projekt> showAll() {
+		return (List<Projekt>) projektRepository.findAll();
+	}
 
-    @Override
-    public Optional<Projekt> find(Long id) {
-        Optional<Projekt> projekt=projektRepository.findById(id);
-        return projekt ;
-    }
-    @Override
-    public Iterable<Projekt> findAll(){
-        return  projektRepository.findAll();
+	@Override
+	public Optional<Projekt> find(Long id) {
+		Optional<Projekt> projekt = projektRepository.findById(id);
+		return projekt;
+	}
 
-    }
+	@Override
+	public Iterable<Projekt> findAll() {
+		return projektRepository.findAll();
+
+	}
 
 
 }

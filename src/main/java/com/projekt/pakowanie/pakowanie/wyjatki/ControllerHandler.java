@@ -1,4 +1,4 @@
-package com.projekt.pakowanie.pakowanie.wyjątki;
+package com.projekt.pakowanie.pakowanie.wyjatki;
 
 import com.projekt.pakowanie.pakowanie.controler.ProjektController;
 import org.springframework.core.Ordered;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @RestController
 @ControllerAdvice(assignableTypes= ProjektController.class)
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class ControllerHandler extends ResponseEntityExceptionHandler {
+class ControllerHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public final ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException exception,

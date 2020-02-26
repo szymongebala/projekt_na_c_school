@@ -7,70 +7,74 @@ import java.util.List;
 
 @Entity
 public class Preservation {
-@Id
-@GeneratedValue(strategy = GenerationType.SEQUENCE)
-private Long id;
-private String nazwa;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
+	private String nazwa;
 
-@OneToMany(mappedBy="preservation")
-@JsonIgnore
-private List<Instrukcja> instrukcja;
+	@OneToMany(mappedBy = "preservation")
+	@JsonIgnore
+	private List<Instrukcja> instrukcja;
 
-    public List<Instrukcja> getInstrukcja() {
-        return instrukcja;
-    }
+	public List<Instrukcja> getInstrukcja() {
+		return instrukcja;
+	}
 
-    public void setInstrukcja(List<Instrukcja> instrukcja) {
-        this.instrukcja = instrukcja;
-    }
+	public void setInstrukcja(List<Instrukcja> instrukcja) {
+		this.instrukcja = instrukcja;
+	}
 
-    public Preservation(){}
+	public Preservation() {
+	}
 
-    public Preservation(Long id) {
-        this.id = id;
-    }
+	public Preservation(Long id) {
+		this.id = id;
+	}
 
-    public Preservation(String nazwa) {
-        this.nazwa = nazwa;
-    }
+	public Preservation(String nazwa) {
+		this.nazwa = nazwa;
+	}
 
-    public String getNazwa() {
-        return nazwa;
-    }
+	public String getNazwa() {
+		return nazwa;
+	}
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
-    }
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	private Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-
-    @Override
-    public boolean equals(Object o){
-        if(this==o)return true;
-        if(!(o instanceof Preservation)) return false;
-      Preservation other=(Preservation) o;
-        return id!=null&&id.equals(other.getId());
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 
-    }
-    @Override
-    public String toString() {
-        return "Preservation{" +
-                "id=" + id +
-                ", name='" + nazwa + '\'' +
-                "}";
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Preservation)) return false;
+		Preservation other = (Preservation) o;
+		return id != null && id.equals(other.getId());
 
-    }
-    @Override
-    public int hashCode(){return 31;}
+
+	}
+
+	@Override
+	public String toString() {
+		return "Preservation{" +
+				"id=" + id +
+				", name='" + nazwa + '\'' +
+				"}";
+
+	}
+
+	@Override
+	public int hashCode() {
+		return 31;
+	}
 
 }
 

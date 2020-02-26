@@ -1,8 +1,8 @@
-package com.projekt.pakowanie.pakowanie.wyjątki;
+package com.projekt.pakowanie.pakowanie.wyjatki;
 
 import java.time.LocalDateTime;
 
-public class podstawowewyjatki {
+class podstawowewyjatki {
     private LocalDateTime timestamp;
     private String message;
     private String details;

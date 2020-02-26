@@ -8,24 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class Test2 {
+class Test2 {
     @Autowired
+    private
     InstrukcjaService instrukcjaService;
 
 
-
     @Test
-    public void czytaj(){
-        Long id=1L;
-       Instrukcja instrukcja = instrukcjaService.CreateInstrukcja("nazwa");
+    void czytaj() {
+        Long id = 1L;
+        Instrukcja instrukcja = instrukcjaService.CreateInstrukcja("nazwa");
 
 
+        Assertions.assertTrue(instrukcja.getNazwaInstrukcji().equals("nazwa"));
 
 
-     Assertions.assertEquals(true,instrukcja.getNazwaInstrukcji().equals("nazwa"));
-
-
-
-
-
-}}
+    }
+}

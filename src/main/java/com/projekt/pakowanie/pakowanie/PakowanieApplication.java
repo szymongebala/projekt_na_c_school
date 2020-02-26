@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //commit koncowy
 @SpringBootApplication
-
-public class PakowanieApplication {
+class PakowanieApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PakowanieApplication.class, args);

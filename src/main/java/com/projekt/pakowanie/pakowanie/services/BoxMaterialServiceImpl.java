@@ -14,48 +14,50 @@ import java.util.Optional;
 @Service
 @Transactional
 public class BoxMaterialServiceImpl implements BoxMaterialService {
-    private BoxMaterialRepository boxMaterialRepository;
-    private InstrukcjaRepository instrukcjaRepository;
+	private BoxMaterialRepository boxMaterialRepository;
+	private InstrukcjaRepository instrukcjaRepository;
 
-    public BoxMaterialServiceImpl(BoxMaterialRepository boxMaterialRepository,InstrukcjaRepository instrukcjaRepository) {
-        this.boxMaterialRepository = boxMaterialRepository;
-        this.instrukcjaRepository=instrukcjaRepository;
-    }
+	public BoxMaterialServiceImpl(BoxMaterialRepository boxMaterialRepository, InstrukcjaRepository instrukcjaRepository) {
+		this.boxMaterialRepository = boxMaterialRepository;
+		this.instrukcjaRepository = instrukcjaRepository;
+	}
 
 
-    @Override
-    public BoxMaterial CreateBoxMaterial(String nazwa ){
+	@Override
+	public BoxMaterial CreateBoxMaterial(String nazwa) {
 
-        BoxMaterial boxMaterial=new BoxMaterial(nazwa);
-        boxMaterialRepository.save(boxMaterial);
-        return boxMaterial;
-    }
+		BoxMaterial boxMaterial = new BoxMaterial(nazwa);
+		boxMaterialRepository.save(boxMaterial);
+		return boxMaterial;
+	}
 
-    @Override
-    @JsonIgnore
-    public List<BoxMaterial> showAll() {
-        return (List<BoxMaterial>) boxMaterialRepository.findAll();
-    }
+	@Override
+	@JsonIgnore
+	public List<BoxMaterial> showAll() {
+		return (List<BoxMaterial>) boxMaterialRepository.findAll();
+	}
 
-    @Override
-    public Optional<BoxMaterial> find(Long id){
-        Optional<BoxMaterial> boxMaterial = boxMaterialRepository.findById(id);
-        return boxMaterial;
-    }
-    @Override
-    public Optional<BoxMaterial> add(Long idInstrukcja, Long idBoxMaterial ){
-        Optional<BoxMaterial> boxMaterial=boxMaterialRepository.findById(idBoxMaterial);
-        Optional <Instrukcja> instrukcja=instrukcjaRepository.findById(idInstrukcja);
-        instrukcja.get().setBoxMaterial(boxMaterial.get());
-        boxMaterial.get().getInstrukcja().add(instrukcja.get());
+	@Override
+	public Optional<BoxMaterial> find(Long id) {
+		Optional<BoxMaterial> boxMaterial = boxMaterialRepository.findById(id);
+		return boxMaterial;
+	}
 
-      boxMaterialRepository.save(boxMaterial.get());
-        return  boxMaterial;
-    }
-    @Override
-    public Iterable<BoxMaterial> findAll(){
-        return  boxMaterialRepository.findAll();
+	@Override
+	public Optional<BoxMaterial> add(Long idInstrukcja, Long idBoxMaterial) {
+		Optional<BoxMaterial> boxMaterial = boxMaterialRepository.findById(idBoxMaterial);
+		Optional<Instrukcja> instrukcja = instrukcjaRepository.findById(idInstrukcja);
+		instrukcja.get().setBoxMaterial(boxMaterial.get());
+		boxMaterial.get().getInstrukcja().add(instrukcja.get());
 
-    }
+		boxMaterialRepository.save(boxMaterial.get());
+		return boxMaterial;
+	}
+
+	@Override
+	public Iterable<BoxMaterial> findAll() {
+		return boxMaterialRepository.findAll();
+
+	}
 
 }
