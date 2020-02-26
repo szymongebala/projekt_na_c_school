@@ -4,10 +4,10 @@ import com.projekt.pakowanie.pakowanie.klasy.modele.Instrukcja;
 import com.projekt.pakowanie.pakowanie.klasy.modele.Projekt;
 import com.projekt.pakowanie.pakowanie.services.InstrukcjaService;
 import com.projekt.pakowanie.pakowanie.services.ProjektService;
-import com.projekt.pakowanie.pakowanie.wyjątki.podstawowewyjatki;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +43,6 @@ public class InstrukcjaController {
     public Optional<Instrukcja> addInstrukcja(@PathVariable Long projektid,@PathVariable Long instrukcjaid) {
 
        Optional<Instrukcja> instrukcja = instrukcjaService.add(projektid,instrukcjaid);
-        if(!instrukcja.isPresent()){throw new podstawowewyjatki("Coś tu nie istnieje");}
 
 
         return instrukcja;
@@ -67,7 +66,9 @@ public class InstrukcjaController {
     }
 @RequestMapping("/znajdz/{id}")
     @ResponseBody
-    public Optional<Instrukcja>findBy(@PathVariable Long id){
+    public Optional<Instrukcja>findBy(@PathVariable Long id) throws EntityNotFoundException {
+    if(!instrukcjaService.find(id).isPresent()){ throw new EntityNotFoundException("Resource not found!"); }
+    else{
      Optional<Instrukcja>instrukcja =instrukcjaService.find(id);
 
     return instrukcja;
@@ -75,5 +76,5 @@ public class InstrukcjaController {
 }
 
 
-}
+}}
 

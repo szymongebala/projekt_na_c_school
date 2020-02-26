@@ -7,6 +7,7 @@ import com.projekt.pakowanie.pakowanie.services.ProjektService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,9 @@ public class ProjektController {
     @RequestMapping(value = "/CreateProjekt")
     @ResponseBody
     public Projekt CreateProjekt(@RequestParam String nazwaProjektu) {
+
         return projektService.CreateProjekt(nazwaProjektu);
+
     }
 
     @RequestMapping(value = "/ProjektShow", method = RequestMethod.GET)
@@ -33,7 +36,8 @@ public class ProjektController {
     }
 
     @RequestMapping(value = "ProjekFind")
-    public Optional<Projekt> find(@RequestParam Long id) {
+    public Optional<Projekt> find(@RequestParam Long id) throws EntityNotFoundException {
+        if(!projektService.find(id).isPresent()){ throw new EntityNotFoundException("Resource not found!"); }
         return projektService.find(id);
     }
 
@@ -87,17 +91,12 @@ return response.toString();
 
 }
 @RequestMapping("/projekt/status/{id}")
+@ResponseBody
     public Optional<Projekt> projektstatus(@PathVariable Long id){
     Optional<Projekt> projekt = projektService.find(id);
-    int idint =id.intValue();
-    switch(idint) {
-        case 1: projekt.get().setOfertowany(true);
-        case 2:projekt.get().setZamówiony(true);
-        case 3:projekt.get().setGotowy(true);
-        default:{ projekt.get().setZamówiony(false);
-        projekt.get().setOfertowany(false);
-        projekt.get().setGotowy(false);}
-    }
+    if(!projektService.find(id).isPresent()){ throw new EntityNotFoundException("Resource not found!"); }
+    else{
+
 return projekt;
 }
-}
+}}
