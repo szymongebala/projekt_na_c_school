@@ -38,7 +38,7 @@ public class ProjektController {
     @RequestMapping(value = "ProjekFind")
     public Optional<Projekt> find(@RequestParam Long id) throws EntityNotFoundException {
         if(!projektService.find(id).isPresent()){ throw new EntityNotFoundException("Resource not found!"); }
-        return projektService.find(id);
+        return projektService.find(id);//wyszukiwanie pustych id
     }
 
     @RequestMapping("/projekt-skrzynie")
